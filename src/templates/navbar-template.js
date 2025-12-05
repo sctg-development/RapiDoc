@@ -52,7 +52,7 @@ export function navBarClickAndEnterHandler(event) {
   }
 }
 
-/* eslint-disable indent */
+ 
 export default function navbarTemplate() {
   if (!this.resolvedSpec || this.resolvedSpec.specLoadError) {
     return html`
@@ -269,4 +269,4 @@ export default function navbarTemplate() {
 </nav>
 `;
 }
-/* eslint-enable indent */
+ 

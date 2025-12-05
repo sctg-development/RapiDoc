@@ -1,12 +1,12 @@
 {
-  "name": "rapidoc",
-  "version": "9.3.8",
+  "name": "@sctg/rapidoc",
+  "version": "9.3.8-b",
   "description": "RapiDoc - Open API spec viewer with built in console",
   "author": "Mrinmoy Majumdar <mrin9@yahoo.com>",
   "homepage": "https://rapidocweb.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rapi-doc/RapiDoc.git"
+    "url": "https://github.com/sctg-development/RapiDoc"
   },
   "license": "MIT",
   "keywords": [
@@ -33,12 +33,12 @@
   "module": "dist/rapidoc-min.js",
   "mode": "production",
   "dependencies": {
-    "@apitools/openapi-parser": "0.0.36",
+    "@apitools/openapi-parser": "0.0.37",
     "base64-arraybuffer": "^1.0.2",
     "buffer": "^6.0.3",
-    "lit": "^3.2.1",
-    "marked": "4.3.0",
-    "prismjs": "^1.29.0",
+    "lit": "^3.3.1",
+    "marked": "17.0.1",
+    "prismjs": "^1.30.0",
     "randexp": "^0.5.3",
     "xml-but-prettier": "^1.0.1"
   },
@@ -49,35 +49,41 @@
     "serve-prod": "webpack serve --mode=production",
     "serve1": "node --trace-deprecation ./node_modules/webpack/bin/webpack serve",
     "lint": "./node_modules/eslint/bin/eslint.js ./src/**",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js --fix ./src/**"
+    "lint-fix": "./node_modules/eslint/bin/eslint.js --fix ./src/**",
+    "test": "node --test"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.9",
-    "@babel/eslint-parser": "^7.25.9",
-    "@babel/preset-env": "^7.25.9",
-    "babel-loader": "^9.2.1",
+    "@babel/core": "^7.28.5",
+    "@babel/eslint-parser": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "babel-loader": "^10.0.0",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-import-resolver-webpack": "^0.13.9",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-webpack-plugin": "4.2.0",
+    "eslint": "^9.39.1",
+    "@eslint/eslintrc": "^3.3.3",
+    "eslint-import-resolver-webpack": "^0.13.10",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-webpack-plugin": "5.0.2",
+    "jsdom": "^27.2.0",
     "file-loader": "^6.2.0",
-    "filemanager-webpack-plugin": "^8.0.0",
-    "html-webpack-plugin": "^5.6.3",
+    "filemanager-webpack-plugin": "^9.0.1",
+    "html-webpack-plugin": "^5.6.5",
     "inspectpack": "^4.7.1",
     "style-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.10",
+    "terser-webpack-plugin": "^5.3.15",
     "unminified-webpack-plugin": "^3.0.0",
-    "webpack": "^5.95.0",
-    "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "5.1.0"
+    "webpack": "^5.103.0",
+    "webpack-bundle-analyzer": "^5.0.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "5.2.2"
   },
   "engines": {
     "node": ">=18.16.0"
+  },
+  "publishConfig": {
+    "tag": "latest",
+    "access": "public"
   }
 }

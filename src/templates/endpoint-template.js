@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 import '~/components/api-request';
 import '~/components/api-response';
@@ -43,7 +43,7 @@ function onExpandCollapseAll(e, action = 'expand-all') {
   expandCollapseAll.call(this, e.target.closest('.operations-root'), action);
 }
 
-/* eslint-disable indent */
+ 
 function endpointHeadTemplate(path, pathsExpanded = false) {
   return html`
   <summary @click="${(e) => { toggleExpand.call(this, path, e); }}" part="section-endpoint-head-${path.expanded ? 'expanded' : 'collapsed'}" class='endpoint-head ${path.method} ${path.deprecated ? 'deprecated' : ''} ${pathsExpanded || path.expanded ? 'expanded' : 'collapsed'}'>
@@ -91,38 +91,38 @@ function endpointBodyTemplate(path) {
   <div part="section-endpoint-body-${path.expanded ? 'expanded' : 'collapsed'}" class='endpoint-body ${path.method} ${path.deprecated ? 'deprecated' : ''}'>
     <div class="summary">
       ${path.summary
-        ? html`<div class="title" part="section-endpoint-body-title">${path.summary}</div>`
-        : path.shortSummary !== path.description
-          ? html`<div class="title" part="section-endpoint-body-title">${path.shortSummary}</div>`
-          : ''
-      }
+      ? html`<div class="title" part="section-endpoint-body-title">${path.summary}</div>`
+      : path.shortSummary !== path.description
+        ? html`<div class="title" part="section-endpoint-body-title">${path.shortSummary}</div>`
+        : ''
+    }
       ${path.xBadges && path.xBadges?.length > 0
-        ? html`
+      ? html`
           <div style="display:flex; flex-wrap:wrap;font-size: var(--font-size-small);">
             ${path.xBadges.map((v) => (
-                v.color === 'none'
-                  ? ''
-                  : html`<span part="endpoint-badge" style="margin:1px; margin-right:5px; padding:1px 8px; font-weight:bold; border-radius:12px;  background-color: var(--light-${v.color}, var(--input-bg)); color:var(--${v.color}); border:1px solid var(--${v.color})">${v.label}</span>`
-              ))
-            }
+        v.color === 'none'
+          ? ''
+          : html`<span part="endpoint-badge" style="margin:1px; margin-right:5px; padding:1px 8px; font-weight:bold; border-radius:12px;  background-color: var(--light-${v.color}, var(--input-bg)); color:var(--${v.color}); border:1px solid var(--${v.color})">${v.label}</span>`
+      ))
+        }
           </div>
           `
-        : ''
-      }
+      : ''
+    }
 
       ${path.description ? html`<div part="section-endpoint-body-description" class="m-markdown"> ${unsafeHTML(marked(path.description))}</div>` : ''}
       ${path.externalDocs?.url || path.externalDocs?.description
-        ? html`<div style="background-color:var(--bg3); padding:2px 8px 8px 8px; margin:8px 0; border-radius:var(--border-radius)"> 
+      ? html`<div style="background-color:var(--bg3); padding:2px 8px 8px 8px; margin:8px 0; border-radius:var(--border-radius)"> 
             <div class="m-markdown"> ${unsafeHTML(marked(path.externalDocs?.description || ''))} </div>
             ${path.externalDocs?.url
-              ? html`<a style="font-family:var(--font-mono); font-size:var(--font-size-small)" href="${path.externalDocs?.url}" target="_blank"> 
+          ? html`<a style="font-family:var(--font-mono); font-size:var(--font-size-small)" href="${path.externalDocs?.url}" target="_blank"> 
                   ${path.externalDocs?.url} <div style="transform: rotate(270deg) scale(1.5); display: inline-block; margin-left:5px">⇲</div>
                 </a>`
-              : ''
-            }
+          : ''
+        }
           </div>`
-        : ''
-      }
+      : ''
+    }
       <slot name="${path.elementId}"></slot>
       ${pathSecurityTemplate.call(this, path.security)}
       ${codeSampleTabPanel}
@@ -208,11 +208,11 @@ export default function endpointTemplate(isMini = false, pathsExpanded = false) 
         ? html`
           <div class='section-tag-body'>
           ${tag.paths.filter((path) => {
-            if (this.searchVal) {
-              return getMatchedPaths(this.searchVal, path, tag.name);
-            }
-            return true;
-            }).map((path) => html`
+          if (this.searchVal) {
+            return getMatchedPaths(this.searchVal, path, tag.name);
+          }
+          return true;
+        }).map((path) => html`
             <section id='${path.elementId}' class='m-endpoint regular-font ${path.method} ${pathsExpanded || path.expanded ? 'expanded' : 'collapsed'}'>
               ${endpointHeadTemplate.call(this, path, pathsExpanded)}      
               ${pathsExpanded || path.expanded ? endpointBodyTemplate.call(this, path) : ''}
@@ -231,21 +231,21 @@ export default function endpointTemplate(isMini = false, pathsExpanded = false) 
                 ${unsafeHTML(marked(tag.description || ''))}
               </div>
               ${tag.paths.filter((v) => {
-                if (this.searchVal) {
-                  return getMatchedPaths(this.searchVal, v, tag.name);
-                }
-                return true;
-                }).map((path) => html`
+          if (this.searchVal) {
+            return getMatchedPaths(this.searchVal, v, tag.name);
+          }
+          return true;
+        }).map((path) => html`
                 <section part="section-endpoint" id='${path.elementId}' class='m-endpoint regular-font ${path.method} ${pathsExpanded || path.expanded ? 'expanded' : 'collapsed'}'>
                   ${endpointHeadTemplate.call(this, path, pathsExpanded)}      
                   ${pathsExpanded || path.expanded ? endpointBodyTemplate.call(this, path) : ''}
                 </section>`)
-              }
+          }
             </div>
           </div>
         `
       }
   `)
-  }`;
+    }`;
 }
-/* eslint-enable indent */
+ 

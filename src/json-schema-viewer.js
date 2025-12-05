@@ -303,7 +303,7 @@ export default class JsonSchemaViewer extends LitElement {
       this.loading = false;
       this.loadFailed = true;
       this.resolvedSpec = null;
-      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`); // eslint-disable-line no-console
+      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`);  
     }
   }
 

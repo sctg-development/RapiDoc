@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import logoTemplate from '~/templates/logo-template';
 
-/* eslint-disable indent */
+ 
 export default function headerTemplate() {
   return html`
   <header class="row main-header regular-font" part="section-header" style="padding:8px 4px 8px 4px;min-height:48px;">
@@ -63,4 +63,4 @@ export default function headerTemplate() {
     </div>
     </header>`;
   }
-/* eslint-enable indent */
+ 

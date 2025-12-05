@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 import { schemaInObjectNotation } from '~/utils/schema-utils';
 import '~/components/json-tree';
@@ -12,7 +12,7 @@ function schemaBodyTemplate(sComponent) {
   <div class='expanded-endpoint-body observe-me ${sComponent.name}' id='cmp--${sComponent.id}' >
     <div style="font-weight:bold"> ${sComponent.name} <span style="color:var(--light-fg); font-size:var(--font-size-small); font-weight:400;"> Schema </span></div>
   ${this.schemaStyle === 'table'
-    ? html`
+      ? html`
       <schema-table
         .data = '${schemaInObjectNotation(sComponent.component, {})}'
         schema-expand-level = "${this.schemaExpandLevel}"
@@ -22,7 +22,7 @@ function schemaBodyTemplate(sComponent) {
         schema-hide-write-only = "${this.schemaHideWriteOnly}"
         exportparts = "schema-description:schema-description, schema-multiline-toggle:schema-multiline-toggle"
       > </schema-table>`
-    : html`
+      : html`
       <schema-tree
         .data = '${schemaInObjectNotation(sComponent.component, {})}'
         schema-expand-level = "${this.schemaExpandLevel}"
@@ -32,7 +32,7 @@ function schemaBodyTemplate(sComponent) {
         schema-hide-write-only = "${this.schemaHideWriteOnly}"
         exportparts = "schema-description:schema-description, schema-multiline-toggle:schema-multiline-toggle"
       > </schema-tree>`
-}
+    }
   </div>`;
 }
 
@@ -46,11 +46,11 @@ function componentBodyTemplate(sComponent, componentType) {
     ${html`
       <div style="font-weight:bold"> ${sComponent.name} <span style="color:var(--light-fg); font-size:var(--font-size-small); font-weight:400"> ${componentType} </span> </div>
       ${sComponent.component
-    ? html`
+        ? html`
       <div class='mono-font regular-font-size' style='padding: 8px 0; color:var(--fg2)'> 
         <json-tree class="border tree" render-style='${this.renderStyle}' .data="${sComponent.component}"> </json-tree>
       </div>`
-    : ''}
+        : ''}
     `}
   </div>
   `;
@@ -70,7 +70,7 @@ export default function componentsTemplate() {
       ${component.subComponents.filter((c) => c.expanded !== false).map((sComponent) => componentBodyTemplate.call(this, sComponent, component.name))}
     </div>
     `)
-}
+    }
 `;
 }
-/* eslint-enable indent */
+ 

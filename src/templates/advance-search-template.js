@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import '~/components/dialog-box';
 
-/* eslint-disable indent */
+ 
 export default function searchByPropertiesModalTemplate() {
   document.addEventListener('close', () => { this.showAdvancedSearchDialog = false; });
   document.addEventListener('open', this.onOpenSearchDialog);
@@ -69,4 +69,4 @@ export default function searchByPropertiesModalTemplate() {
     </dialog-box>
   `;
 }
-/* eslint-enable indent */
+ 

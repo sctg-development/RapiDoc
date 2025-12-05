@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-/* eslint-disable indent */
+ 
 export default function logoTemplate(style) {
 return html`
   <div style=${style}>
@@ -15,4 +15,4 @@ return html`
   </div>    
 `;
 }
-/* eslint-enable indent */
+ 

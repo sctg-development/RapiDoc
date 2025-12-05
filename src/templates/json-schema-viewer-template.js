@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 
 // Templates
@@ -11,7 +11,7 @@ import '~/components/schema-tree';
 import SetTheme from '~/utils/theme';
 import { isValidHexColor } from '~/utils/color-utils';
 
-/* eslint-disable indent */
+ 
 // Json Schema Nav Template
 function jsonSchemaNavTemplate() {
   return html`
@@ -32,12 +32,12 @@ function jsonSchemaNavTemplate() {
       ${this.resolvedSpec.schemaAndExamples.map((v) => html`
         <div class='nav-bar-path' data-content-id='${v.elementId}' id='link-${v.elementId}'
           @click = '${(e) => {
-            this.scrollToEventTarget(e, false);
-          }}'
+      this.scrollToEventTarget(e, false);
+    }}'
         > 
           ${v.name}
         </div>`)
-      }
+    }
     </nav>  
   </nav>
   `;
@@ -49,9 +49,9 @@ function jsonSchemaBodyTemplate() {
     ${this.showInfo === 'true' ? overviewTemplate.call(this) : ''}
     <div style="font-size:var(--font-size-regular);">
     ${this.resolvedSpec.schemaAndExamples.map((jSchemaBody) => {
-      const examplesObj = generateExample(jSchemaBody.schema, 'json', standardizeExample(jSchemaBody.examples), standardizeExample(jSchemaBody.example), true, false, 'json', true);
-      jSchemaBody.selectedExample = examplesObj[0]?.exampleId;
-      return html`
+    const examplesObj = generateExample(jSchemaBody.schema, 'json', standardizeExample(jSchemaBody.examples), standardizeExample(jSchemaBody.example), true, false, 'json', true);
+    jSchemaBody.selectedExample = examplesObj[0]?.exampleId;
+    return html`
         <section id='${jSchemaBody.elementId}' class='json-schema-and-example regular-font' style="display:flex; flex-direction: column; border:1px solid var(--border-color); margin-bottom:32px; border-top: 5px solid var(--border-color)">
           <div style="padding:16px; border-bottom: 1px solid var(--border-color)">
             <div style="font-size:var(--font-size-small); font-weight:bold">${jSchemaBody.name}</div>
@@ -70,15 +70,15 @@ function jsonSchemaBodyTemplate() {
             </div>
             <div class="json-schema-example-panel" style="width:400px; background-color: var(--input-bg); padding:16px 0 16px 16px; border-left: 1px dashed var(--border-color);">
               ${examplesObj.length > 1
-                ? html`<select style="min-width:100px; max-width:100%" @change='${(e) => this.onSelectExample(e, jSchemaBody)}'>
+        ? html`<select style="min-width:100px; max-width:100%" @change='${(e) => this.onSelectExample(e, jSchemaBody)}'>
                     ${examplesObj.map((v) => html`
                       <option value="${v.exampleId}" ?selected=${(v.exampleId === jSchemaBody.selectedExample)}> 
                         ${v.exampleSummary.length > 80 ? v.exampleId : v.exampleSummary}
                       </option>`)
-                    }
+          }
                   </select>`
-                : html`<div style="font-size: var(--font-size-small);font-weight:700; margin:5px 0"> ${examplesObj[0].exampleSummary}</div>`
-              }
+        : html`<div style="font-size: var(--font-size-small);font-weight:700; margin:5px 0"> ${examplesObj[0].exampleSummary}</div>`
+      }
               ${examplesObj.map((v) => html`
                 <json-tree 
                   .data = "${v.exampleValue}"
@@ -86,20 +86,20 @@ function jsonSchemaBodyTemplate() {
                   class = "example"
                   style = "margin-top:16px; display: ${v.exampleId === jSchemaBody.selectedExample ? 'flex' : 'none'}"
                 ></json-tree>`)
-              }
+      }
             </div>
           </div>
         </section>`;
-      })
+  })
     }
     </div>
   `;
 }
-/* eslint-enable indent */
+ 
 
 // Json Schema Root Template
 export default function jsonSchemaViewerTemplate(isMini = false) {
-// export default function jsonSchemaViewerTemplate(isMini = false, pathsExpanded = false) {
+  // export default function jsonSchemaViewerTemplate(isMini = false, pathsExpanded = false) {
   if (!this.resolvedSpec) {
     return '';
   }
@@ -115,7 +115,7 @@ export default function jsonSchemaViewerTemplate(isMini = false) {
     navAccentColor: isValidHexColor(this.navAccentColor) ? this.navAccentColor : '',
     navAccenttextColor: isValidHexColor(this.navAccentTextColor) ? this.navAccentTextColor : '',
   };
-  /* eslint-disable indent */
+   
   if (this.resolvedSpec.specLoadError) {
     if (isMini) {
       return html`
@@ -165,21 +165,21 @@ export default function jsonSchemaViewerTemplate(isMini = false) {
         <slot></slot>
         <div class="main-content-inner--${this.renderStyle}-mode">
           ${this.loading === true
-            ? html`<div class="loader"></div>`
-            : html`
+      ? html`<div class="loader"></div>`
+      : html`
               ${this.loadFailed === true
-                ? html`<div style="text-align: center;margin: 16px;"> Unable to load the Spec</div>`
-                : html`
+          ? html`<div style="text-align: center;margin: 16px;"> Unable to load the Spec</div>`
+          : html`
                   <div class="operations-root" @click="${(e) => { this.handleHref(e); }}">
                     ${jsonSchemaBodyTemplate.call(this)}
                   </div>
                 `
-              }`
-          }
+        }`
+    }
         </div>
         <slot name="footer"></slot>
       </main>
     </div>  
   `;
 }
-/* eslint-enable indent */
+ 

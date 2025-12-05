@@ -14,7 +14,7 @@ export const invalidCharsRegEx = /[\s#:?&={}]/g; // used for generating valid ht
 export const rapidocApiKey = '_rapidoc_api_key';
 
 export function sleep(ms) {
-  // eslint-disable-next-line no-promise-executor-return
+   
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -33,7 +33,7 @@ export function copyToClipboard(data, e) {
       btnEl.innerText = 'Copy';
     }, 5000);
   } catch (err) {
-    console.error('Unable to copy', err); // eslint-disable-line no-console
+    console.error('Unable to copy', err);  
   }
   document.body.removeChild(textArea);
 }

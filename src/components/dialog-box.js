@@ -41,7 +41,7 @@ export default class DialogBox extends LitElement {
     super.attributeChangedCallback(name, oldVal, newVal);
   }
 
-  /* eslint-disable indent */
+   
   render() {
     return html`
     ${this.show === 'true'
@@ -60,7 +60,7 @@ export default class DialogBox extends LitElement {
       : ''
     }`;
   }
-  /* eslint-enable indent */
+   
 
   onClose() {
     document.dispatchEvent(new CustomEvent('close', {

@@ -88,7 +88,7 @@ export default class JsonTree extends LitElement {
     ];
   }
 
-  /* eslint-disable indent */
+   
   render() {
     return html`
       <div class = "json-tree"  @click='${(e) => { if (e.target.classList.contains('btn-copy')) { copyToClipboard(JSON.stringify(this.data, null, 2), e); } else { this.toggleExpand(e); } }}'>
@@ -126,7 +126,7 @@ export default class JsonTree extends LitElement {
       ? html`<span class="${typeof data}">"${data}"</span>${isLast ? '' : ','}`
       : html`<span class="${typeof data}">${data}</span>${isLast ? '' : ','}`;
   }
-  /* eslint-enable indent */
+   
 
   toggleExpand(e) {
     const openBracketEl = e.target;

@@ -32,7 +32,7 @@ export default function mainBodyTemplate(isMini = false, pathsExpanded = false) 
     navAccentColor: isValidHexColor(this.navAccentColor) ? this.navAccentColor : '',
     navAccentTextColor: isValidHexColor(this.navAccentTextColor) ? this.navAccentTextColor : '',
   };
-  /* eslint-disable indent */
+   
   if (this.resolvedSpec.specLoadError) {
     return html`
       ${this.theme === 'dark' ? SetTheme.call(this, 'dark', newTheme) : SetTheme.call(this, 'light', newTheme)}
@@ -107,4 +107,4 @@ export default function mainBodyTemplate(isMini = false, pathsExpanded = false) 
     </div>  
   `;
 }
-/* eslint-enable indent */
+ 

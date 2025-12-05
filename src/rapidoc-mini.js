@@ -317,7 +317,7 @@ export default class RapiDocMini extends LitElement {
       this.loading = false;
       this.loadFailed = true;
       this.resolvedSpec = null;
-      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`); // eslint-disable-line no-console
+      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`);  
     }
   }
 
@@ -357,11 +357,11 @@ export default class RapiDocMini extends LitElement {
     }
     if (!this.selectedServer) {
       if (this.resolvedSpec.servers) {
-        this.selectedServer = this.resolvedSpec.servers[0]; // eslint-disable-line prefer-destructuring
+        this.selectedServer = this.resolvedSpec.servers[0];  
       }
     }
     this.requestUpdate();
-    // eslint-disable-next-line no-await-in-loop
+     
     while (!await this.updateComplete);
     const specLoadedEvent = new CustomEvent('spec-loaded', { detail: spec });
     this.dispatchEvent(specLoadedEvent);

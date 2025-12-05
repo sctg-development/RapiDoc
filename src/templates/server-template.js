@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 
 export function setApiServer(serverUrl) {
@@ -30,7 +30,7 @@ function onApiServerVarChange(e, serverObj) {
   this.requestUpdate();
 }
 
-/* eslint-disable indent */
+ 
 function serverVarsTemplate() {
   // const selectedServerObj = this.resolvedSpec.servers.find((v) => (v.url === this.selectedServer));
   return this.selectedServer && this.selectedServer.variables
@@ -42,26 +42,26 @@ function serverVarsTemplate() {
           <td style="vertical-align: middle;" >${kv[0]}</td>
           <td>
             ${kv[1].enum
-            ? html`
+        ? html`
             <select
               data-var = "${kv[0]}"
               @input = ${(e) => { onApiServerVarChange.call(this, e, this.selectedServer); }}
             >
             ${Object.entries(kv[1].enum).map((e) => (kv[1].default === e[1]
-              ? html`
+          ? html`
               <option
                 selected
                 label = ${e[1]}
                 value = ${e[1]}
               />`
-              : html`
+          : html`
               <option
                 label = ${e[1]}
                 value = ${e[1]}
               />`
-            ))}
+        ))}
             </select>`
-            : html`
+        : html`
             <input
               type = "text"
               part="textbox textbox-server-var"
@@ -73,9 +73,9 @@ function serverVarsTemplate() {
           </td>
         </tr>
         ${kv[1].description
-          ? html`<tr><td colspan="2" style="border:none"><span class="m-markdown-small"> ${unsafeHTML(marked(kv[1].description))} </span></td></tr>`
-          : ''
-        }
+        ? html`<tr><td colspan="2" style="border:none"><span class="m-markdown-small"> ${unsafeHTML(marked(kv[1].description))} </span></td></tr>`
+        : ''
+      }
       `)}
     </table>
     `
@@ -89,8 +89,8 @@ export default function serverTemplate() {
     <div part = "section-servers-title" class = "sub-title">API SERVER</div>
     <div class = 'mono-font' style='margin: 12px 0; font-size:calc(var(--font-size-small) + 1px);'>
       ${!this.resolvedSpec.servers || this.resolvedSpec.servers?.length === 0
-        ? ''
-        : html`
+      ? ''
+      : html`
           ${this.resolvedSpec?.servers.map((server, i) => html`
             <input type = 'radio'
               name = 'api_server'
@@ -112,4 +112,4 @@ export default function serverTemplate() {
     ${serverVarsTemplate.call(this)}
   </section>`;
 }
-/* eslint-enable indent */
+ 

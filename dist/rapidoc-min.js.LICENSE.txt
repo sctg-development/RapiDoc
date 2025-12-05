@@ -6,6 +6,13 @@
  */
 
 /*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+/*!
  * https://github.com/Starcounter-Jack/JSON-Patch
  * (c) 2017-2021 Joachim Wester
  * MIT license
@@ -57,8 +64,8 @@
 
 /**
 * @preserve
-* RapiDoc 9.3.8 - WebComponent to View OpenAPI docs
+* RapiDoc 9.3.8-b - WebComponent to View OpenAPI docs
 * License: MIT
-* Repo   : https://github.com/rapi-doc/RapiDoc
+* Repo   : https://github.com/sctg-development/RapiDoc
 * Author : Mrinmoy Majumdar
 */

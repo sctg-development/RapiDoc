@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 import { rapidocApiKey } from '~/utils/common-utils';
 import { pathSecurityTemplate } from '~/templates/security-scheme-template';
@@ -8,7 +8,7 @@ import callbackTemplate from '~/templates/callback-template';
 import '~/components/api-request';
 import '~/components/api-response';
 
-/* eslint-disable indent */
+ 
 function headingRenderer(tagElementId) {
   const renderer = new marked.Renderer();
   renderer.heading = ((text, level, raw, slugger) => `<h${level} class="observe-me" id="${tagElementId}--${slugger.slug(raw)}">${text}</h${level}>`);
@@ -55,11 +55,11 @@ export function expandedEndpointBodyTemplate(path, tagName = '', tagDescription 
     ${this.renderStyle === 'read' ? html`<div class='divider' part="operation-divider"></div>` : ''}
     <div class='expanded-endpoint-body observe-me ${path.method} ${path.deprecated ? 'deprecated' : ''} ' part="section-operation ${path.elementId}" id='${path.elementId}'>
       ${(this.renderStyle === 'focused' && tagName !== 'General ⦂')
-        ? html`
+      ? html`
           <div class="tag-container" part="section-operation-tag"> 
             <span class="upper" style="font-weight:bold; font-size:18px;"> ${tagName} </span>
             ${tagDescription
-              ? html`
+          ? html`
                 <svg class="tag-icon collapsed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" fill="none" style="stroke:var(--primary-color); vertical-align:top; cursor:pointer"
                 @click="${(e) => { expandCollapseTagDescription.call(this, e); }}"
                 >
@@ -68,53 +68,53 @@ export function expandedEndpointBodyTemplate(path, tagName = '', tagDescription 
                 <div class="tag-description collapsed" style="max-height:0px; overflow:hidden; margin-top:16px; border:1px solid var(--border-color)"> 
                   <div class="m-markdown" style="padding:8px"> ${unsafeHTML(marked(tagDescription))}</div>  
                 </div>`
-              : ''
-            }  
+          : ''
+        }  
           </div>
         `
-        : ''
-      }
+      : ''
+    }
       ${path.deprecated ? html`<div class="bold-text red-text"> DEPRECATED </div>` : ''}
       ${html`
         ${path.xBadges && path.xBadges?.length > 0
-          ? html`
+        ? html`
             <div style="display:flex; flex-wrap:wrap; margin-bottom: -24px; font-size: var(--font-size-small);">
               ${path.xBadges.map((v) => (
-                v.color === 'none'
-                  ? ''
-                  : html`<span style="margin:1px; margin-right:5px; padding:1px 8px; font-weight:bold; border-radius:12px;  background-color: var(--light-${v.color}, var(--input-bg)); color:var(--${v.color}); border:1px solid var(--${v.color})">${v.label}</span>`
-                ))
-              }
+          v.color === 'none'
+            ? ''
+            : html`<span style="margin:1px; margin-right:5px; padding:1px 8px; font-weight:bold; border-radius:12px;  background-color: var(--light-${v.color}, var(--input-bg)); color:var(--${v.color}); border:1px solid var(--${v.color})">${v.label}</span>`
+        ))
+          }
             </div>
             `
-          : ''
-        }
+        : ''
+      }
         <h2 part="section-operation-summary"> ${path.shortSummary || `${path.method.toUpperCase()} ${path.path}`}</h2>
         ${path.isWebhook
-          ? html`<span part="section-operation-webhook" style="color:var(--primary-color); font-weight:bold; font-size: var(--font-size-regular);"> WEBHOOK </span>`
-          : html`
+        ? html`<span part="section-operation-webhook" style="color:var(--primary-color); font-weight:bold; font-size: var(--font-size-regular);"> WEBHOOK </span>`
+        : html`
             <div part="section-operation-webhook-method" class="mono-font regular-font-size" style="text-align:left; direction:ltr; padding: 8px 0; color:var(--fg3)"> 
               <span part="label-operation-method" class="regular-font upper method-fg bold-text ${path.method}">${path.method}</span> 
               <span part="label-operation-path">${path.path}</span>
             </div>
           `
-        }
-        <slot name="${path.elementId}"></slot>`
       }
+        <slot name="${path.elementId}"></slot>`
+    }
       ${path.description ? html`<div class="m-markdown"> ${unsafeHTML(marked(path.description))}</div>` : ''}
       ${pathSecurityTemplate.call(this, path.security)}
       ${path.externalDocs?.url || path.externalDocs?.description
-        ? html`<div style="background-color:var(--bg3); padding:2px 8px 8px 8px; margin:8px 0; border-radius:var(--border-radius)"> 
+      ? html`<div style="background-color:var(--bg3); padding:2px 8px 8px 8px; margin:8px 0; border-radius:var(--border-radius)"> 
             <div class="m-markdown"> ${unsafeHTML(marked(path.externalDocs?.description || ''))} </div>
             ${path.externalDocs?.url
-              ? html`<a style="font-family:var(--font-mono); font-size:var(--font-size-small)" href="${path.externalDocs?.url}" target="_blank">
+          ? html`<a style="font-family:var(--font-mono); font-size:var(--font-size-small)" href="${path.externalDocs?.url}" target="_blank">
                   ${path.externalDocs?.url} <div style="transform: rotate(270deg) scale(1.5); display: inline-block; margin-left:5px">⇲</div>
                 </a>`
-              : ''
-            }
+          : ''
+        }
           </div>`
-        : ''
-      }
+      : ''
+    }
       ${codeSampleTabPanel}
       <div class='expanded-req-resp-container'>
         <api-request
@@ -181,19 +181,18 @@ export default function expandedEndpointTemplate() {
       <div class="title tag" part="section-tag-title label-tag-title">${tag.displayName || tag.name}</div>
       <slot name="${tag.elementId}"></slot>
       <div class="regular-font-size">
-      ${
-        unsafeHTML(`
+      ${unsafeHTML(`
           <div class="m-markdown regular-font">
           ${marked(tag.description || '', this.infoDescriptionHeadingsInNavBar === 'true' ? { renderer: headingRenderer(tag.elementId) } : undefined)}
         </div>`)
-      }
+    }
       </div>
     </section>
     <section class="regular-font section-gap--read-mode" part="section-operations-in-tag">
       ${tag.paths.map((path) => expandedEndpointBodyTemplate.call(this, path))}
     </section>
     `)
-  }
+    }
 `;
 }
-/* eslint-enable indent */
+ 

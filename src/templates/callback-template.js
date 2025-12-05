@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-/* eslint-disable indent */
+ 
 export default function callbackTemplate(callbacks) {
   return html`
     <div class="req-res-title" style="margin-top:12px">CALLBACKS</div>
@@ -72,4 +72,4 @@ export default function callbackTemplate(callbacks) {
     `)}
   `;
 }
-/* eslint-enable indent */
+ 

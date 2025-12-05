@@ -671,7 +671,7 @@ export default class RapiDoc extends LitElement {
         this.loadSpec(specObj);
         this.shadowRoot.getElementById('spec-url').value = '';
       } catch {
-        console.error('RapiDoc: Unable to read or parse json'); // eslint-disable-line no-console
+        console.error('RapiDoc: Unable to read or parse json');  
       }
     };
     // Read the Text file
@@ -759,7 +759,7 @@ export default class RapiDoc extends LitElement {
       this.loading = false;
       this.loadFailed = true;
       this.resolvedSpec = null;
-      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`); // eslint-disable-line no-console
+      console.error(`RapiDoc: Unable to resolve the API spec..  ${err.message}`);  
     }
   }
 
@@ -778,11 +778,11 @@ export default class RapiDoc extends LitElement {
     }
     if (!this.selectedServer) {
       if (this.resolvedSpec.servers) {
-        this.selectedServer = this.resolvedSpec.servers[0]; // eslint-disable-line prefer-destructuring
+        this.selectedServer = this.resolvedSpec.servers[0];  
       }
     }
     this.requestUpdate();
-    // eslint-disable-next-line no-await-in-loop
+     
     while (!await this.updateComplete);
     const specLoadedEvent = new CustomEvent('spec-loaded', { detail: spec });
     this.dispatchEvent(specLoadedEvent);

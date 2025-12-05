@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 
 export default class TagInput extends LitElement {
-  /* eslint-disable indent */
+   
   render() {
     let tagItemTmpl = '';
     if (Array.isArray(this.value)) {
@@ -17,7 +17,7 @@ export default class TagInput extends LitElement {
       </div>
     `;
   }
-  /* eslint-enable indent */
+   
 
   static get properties() {
     return {

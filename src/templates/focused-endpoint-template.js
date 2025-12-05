@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'; // eslint-disable-line import/extensions
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
 import { expandedEndpointBodyTemplate } from '~/templates/expanded-endpoint-template';
 import '~/components/api-request';
@@ -35,19 +35,18 @@ function defaultContentTemplate() {
     : wrapFocusedTemplate('');
 }
 
-/* eslint-disable indent */
+ 
 function focusedTagBodyTemplate(tag) {
   return html`
     <h1 id="${tag.elementId}">${tag.displayName || tag.name}</h1>
     ${this.onNavTagClick === 'show-description' && tag.description
       ? html`
         <div class="m-markdown">
-          ${
-            unsafeHTML(`
+          ${unsafeHTML(`
             <div class="m-markdown regular-font">
               ${marked(tag.description || '', this.infoDescriptionHeadingsInNavBar === 'true' ? { renderer: headingRenderer(tag.elementId) } : undefined)}
             </div>`)
-          }
+        }
         </div>`
       : ''
     }
@@ -107,4 +106,4 @@ export default function focusedEndpointTemplate() {
   }
   return focusedTemplate;
 }
-/* eslint-enable indent */
+ 

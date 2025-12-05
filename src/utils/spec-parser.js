@@ -1,5 +1,4 @@
-/* eslint-disable no-use-before-define */
-/* eslint import/no-unresolved: [2, { commonjs: true, amd: true }] */
+ 
 import OpenApiParser from '@apitools/openapi-parser';
 import { marked } from 'marked';
 import { invalidCharsRegEx, rapidocApiKey, sleep } from '~/utils/common-utils';
@@ -48,7 +47,7 @@ export default async function ProcessSpec(
       jsonParsedSpec = filterPaths(specMeta.spec, matchPaths, matchType, removeEndpointsWithBadgeLabelAs);
       this.dispatchEvent(new CustomEvent('before-render', { detail: { spec: jsonParsedSpec } }));
     } else {
-      console.info('RapiDoc: %c There was an issue while parsing the spec %o ', 'color:orangered', specMeta); // eslint-disable-line no-console
+      console.info('RapiDoc: %c There was an issue while parsing the spec %o ', 'color:orangered', specMeta);  
       return {
         specLoadError: true,
         isSpecLoading: false,
@@ -61,7 +60,7 @@ export default async function ProcessSpec(
       };
     }
   } catch (err) {
-    console.info('RapiDoc: %c There was an issue while parsing the spec %o ', 'color:orangered', err); // eslint-disable-line no-console
+    console.info('RapiDoc: %c There was an issue while parsing the spec %o ', 'color:orangered', err);  
   }
 
   // const pathGroups = groupByPaths(jsonParsedSpec);
@@ -333,7 +332,7 @@ function groupByTags(openApiSpec, sortEndpointsBy, generateMissingTags = false, 
   const pathsAndWebhooks = openApiSpec.paths || {};
   if (openApiSpec.webhooks) {
     for (const [key, value] of Object.entries(openApiSpec.webhooks)) {
-      value._type = 'webhook'; // eslint-disable-line no-underscore-dangle
+      value._type = 'webhook';  
       pathsAndWebhooks[key] = value;
     }
   }
@@ -344,7 +343,7 @@ function groupByTags(openApiSpec, sortEndpointsBy, generateMissingTags = false, 
       servers: pathsAndWebhooks[pathOrHookName].servers || [],
       parameters: pathsAndWebhooks[pathOrHookName].parameters || [],
     };
-    const isWebhook = pathsAndWebhooks[pathOrHookName]._type === 'webhook'; // eslint-disable-line no-underscore-dangle
+    const isWebhook = pathsAndWebhooks[pathOrHookName]._type === 'webhook';  
     supportedMethods.forEach((methodName) => {
       if (pathsAndWebhooks[pathOrHookName][methodName]) {
         const pathOrHookObj = openApiSpec.paths[pathOrHookName][methodName];
